@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)^c%lj9i)=%@%vx)85hsib1(f49=%s0ty6sg03hgs+q(8j_@8g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["mysitetest.uz" , "www.mysitetest.uz","127.0.0.1"]
 
 
 # Application definition
@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'backend_dental.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'NAME': 'mysitete_dental',
+        'USER': 'mysitete_admin',
+        'PASSWORD': '923282Dental',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -125,13 +125,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Для хранения собранной статики
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')  # Для хранения исходных статических файлов
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = ["https://mysitetest.uz", "https://www.mysitetest.uz"]
 
 CORS_ALLOW_ALL_ORIGINS = True
